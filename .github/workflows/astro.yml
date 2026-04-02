@@ -16,8 +16,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # or your preferred Node.js version
       - name: Install, build, and upload your site
-        # v1→v2
         uses: withastro/action@v2
   deploy:
     needs: build
@@ -28,5 +31,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        # v1→v4
         uses: actions/deploy-pages@v4
